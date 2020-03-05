@@ -1,0 +1,16 @@
+{
+  "miniprogramRoot": "./dist/",
+  "projectname": "莫逸",
+  "description": "tantaiqiuyue",
+  "appid": "wx1ca8d7a18a0a7bd9",
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "postcss": false,
+    "minified": false
+  },
+  "compileType": "miniprogram",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {}
+}

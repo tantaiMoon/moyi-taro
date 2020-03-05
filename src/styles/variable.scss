@@ -1,0 +1,8 @@
+$capsule-padding: 6PX; // 胶囊的上下padding距离
+$capsule-height: 32PX; // 胶囊的高度
+$capsule-width: 88PX; // 胶囊的宽度
+
+$navigation-height: $capsule-padding * 2 + $capsule-height;
+$navigation-font-size: 38PX;
+$navigation-icon-font-size: 25PX;
+$navigation-box-shadow: 0 2PX 2PX #222;

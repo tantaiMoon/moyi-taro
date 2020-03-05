@@ -1,0 +1,65 @@
+$color-line-first: #191f25; // 分割线颜色
+$color-line-second: #f0f0f5; // 分割线颜色
+$color-bg: #f5f6fa; // 背景色
+$color-bg-white: #ffffff; // 背景色
+
+$color-btn-bg: #795af4; //蓝色背景色
+$color-text-black: #000000; //黑色字
+$color-text-primary: #333333; // 主内容
+$color-text-secondary: #999999; // 次要内容
+$color-text-secondary-title: #666666; // 次要内容
+$text-size: 15px;
+$margin-num: 30px;
+$box-shadow: 0px 0px 37px 2px rgba(0, 0, 0, 0.06);
+
+@mixin flex($flex-direction: row, $justify-content: center) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+}
+
+@mixin circle-box {
+  display: flex;
+  padding-bottom: 20px;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-items: stretch;
+  .img-box {
+    @include flex($flex-direction: column);
+    align-items: center;
+    width: 23vw;
+    margin-top: 60px;
+  }
+  .my-img {
+    border-radius: 100px;
+    border: 0;
+    margin-bottom: 20px;
+    width: 100px;
+    height: 100px;
+  }
+  .txt-title {
+    color: $color-text-black;
+    font-size: 26px;
+    width: 140px;
+    text-align: center;
+    overflow: hidden; //超出的文本隐藏
+    text-overflow: ellipsis; //溢出用省略号显示
+    white-space: nowrap; //溢出不换行
+  }
+  .txt-tip {
+    color: $color-text-secondary;
+    font-size: 24px;
+    width: 140px;
+    text-align: center;
+    overflow: hidden; //超出的文本隐藏
+    text-overflow: ellipsis; //溢出用省略号显示
+    white-space: nowrap; //溢出不换行
+  }
+}
+
+@mixin line($height: 1px) {
+  background-color: $color-line-second;
+  display: flex;
+  width: 100vw;
+  height: $height;
+}

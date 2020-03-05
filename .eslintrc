@@ -1,0 +1,41 @@
+{
+  "extends": [
+    "taro"
+  ],
+  "rules": {
+    "no-unused-vars": [
+      "error",
+      {
+        "varsIgnorePattern": "Taro"
+      }
+    ],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".tsx"
+        ]
+      }
+    ],
+    "no-invalid-this": 0,
+//    "no-unused-vars": 0,
+    "grouped-accessor-pairs": 0,
+    "no-dupe-else-if": 0,
+    "no-setter-return": 0,
+    "no-constructor-return": 0,
+    "no-import-assign": 0,
+    "import/no-commonjs": 0,
+    "import/first": 0,
+    "prefer-regex-literals": 0
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "useJSXTextNode": true,
+    "project": "./tsconfig.json"
+  }
+}
