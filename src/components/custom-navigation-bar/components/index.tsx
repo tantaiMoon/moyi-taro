@@ -50,7 +50,6 @@ class CustomNavigation extends Component<IPropsType, PageState> {
       // color,
       bgImg
     } = this.props
-
     const barStyle = {
       paddingTop: `${(systemInfo && systemInfo.statusBarHeight) || 20}px`,
       backgroundColor: bgColor,

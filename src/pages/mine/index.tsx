@@ -18,6 +18,9 @@ class Mine extends Taro.PureComponent {
           bgImg=''
           txtColor='#000'
         />
+        <View>
+          wrapper
+        </View>
         mine
       </View>
     )

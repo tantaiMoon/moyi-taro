@@ -8,7 +8,7 @@ import './index.scss'
 
 
 type IProps = {
-  systemInfo: any
+  systemInfo?: any
 }
 
 interface Index {
@@ -49,7 +49,7 @@ class Index extends Component<IProps> {
         <CustomNavigationBar
           txtColor='#000'
           title='莫逸'
-          bgColor='#F4F4F4'
+          bgColor='#fff'
           back={false}
           bgImg=''
         />

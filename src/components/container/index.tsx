@@ -8,7 +8,7 @@ type IProps = {
   children: any,
   systemInfo: {
     systemInfo: {
-      screenHeight: number,
+      windowHeight: number,
       statusBarHeight: number,
       system: string
     }
@@ -32,7 +32,7 @@ class Container extends Taro.PureComponent<IProps, {}>{
     const {
       systemInfo: {
         systemInfo: {
-          screenHeight,
+          windowHeight,
           statusBarHeight,
           system
         }
@@ -43,7 +43,7 @@ class Container extends Taro.PureComponent<IProps, {}>{
       navBarHeight = 48
     }
     const connStyle = {
-      minHeight: `${screenHeight && (screenHeight - (statusBarHeight || 20) - navBarHeight)}px`
+      minHeight: `${windowHeight && (windowHeight - (statusBarHeight || 20) - navBarHeight)}px`
     }
     return (
       <View className='container' style={connStyle}>
