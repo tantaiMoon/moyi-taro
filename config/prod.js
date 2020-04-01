@@ -1,6 +1,8 @@
 module.exports = {
   env: {
-    NODE_ENV: '"production"'
+    NODE_ENV: '"production"',
+    API_URL: '"https://free-api.heweather.net/s6"',
+    BASE_URL: '"https://api.moyi0.com/applits/"'
   },
   defineConstants: {
   },

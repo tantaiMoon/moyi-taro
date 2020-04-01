@@ -1,5 +1,21 @@
 const path = require('path')
 
+const sassImporter = function(url) {
+  if (url[0] === '~' && url[1] !== '/') {
+    return {
+      file: path.resolve(__dirname, '..', 'node_modules', url.substr(1))
+    }
+  }
+
+  const reg = /^@styles\/(.*)/
+  return {
+    file: reg.test(url)
+      ? path.resolve(__dirname, '..', `src/${process.env.TARO_ENV}/styles`, url.match(reg)[1])
+      : url
+  }
+}
+
+
 const config = {
   projectName: 'MoYi',
   date: '2020-3-1',
@@ -9,7 +25,7 @@ const config = {
     '750': 1,
     '828': 1.81 / 2
   },
-  sourceRoot: 'src',
+  sourceRoot: `src/${process.env.TARO_ENV}`,
   outputRoot: `dist/${process.env.TARO_ENV}`,
   plugins: {
     babel: {
@@ -24,9 +40,21 @@ const config = {
         'transform-class-properties',
         'transform-object-rest-spread'
       ]
+    },
+    sass: {
+      importer: sassImporter
     }
   },
   defineConstants: {
+  },
+  copy: {
+    patterns: [
+      // {
+      //   from: `src/weapp/components/ParserRichText/Parser/`,
+      //   to: `dist/weapp/components/ParserRichText/Parser/`
+      // }
+    ],
+    options: {}
   },
   weapp: {
     module: {
@@ -89,12 +117,12 @@ const config = {
     }
   },
   alias: {
-    '@': path.resolve(__dirname, '..', 'src'),
-    '@api': path.resolve(__dirname, '..', 'src/api'),
-    '@components': path.resolve(__dirname, '..', 'src/components'),
-    '@assets': path.resolve(__dirname, '..', 'src/assets'),
-    '@styles': path.resolve(__dirname, '..', 'src/styles'),
-    '@store': path.resolve(__dirname, '..', 'src/store')
+    '@': path.resolve(__dirname, '..', 'src/weapp'),
+    '@api': path.resolve(__dirname, '..', 'src/weapp/api'),
+    '@components': path.resolve(__dirname, '..', 'src/weapp/components'),
+    '@assets': path.resolve(__dirname, '..', 'src/weapp/assets'),
+    '@styles': path.resolve(__dirname, '..', 'src/weapp/styles'),
+    '@store': path.resolve(__dirname, '..', 'src/weapp/store')
   }
 }
 
