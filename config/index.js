@@ -46,6 +46,7 @@ const config = {
     }
   },
   defineConstants: {
+    SECRET_KEY: '"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"'
   },
   copy: {
     patterns: [
@@ -117,12 +118,12 @@ const config = {
     }
   },
   alias: {
-    '@': path.resolve(__dirname, '..', 'src/weapp'),
-    '@api': path.resolve(__dirname, '..', 'src/weapp/api'),
-    '@components': path.resolve(__dirname, '..', 'src/weapp/components'),
-    '@assets': path.resolve(__dirname, '..', 'src/weapp/assets'),
+    '@': path.resolve(__dirname, '..', 'src'),
+    '@/api': path.resolve(__dirname, '..', 'src/weapp/api'),
+    '@/components': path.resolve(__dirname, '..', 'src/weapp/components'),
+    '@/assets': path.resolve(__dirname, '..', 'src/weapp/assets'),
     '@styles': path.resolve(__dirname, '..', 'src/weapp/styles'),
-    '@store': path.resolve(__dirname, '..', 'src/weapp/store')
+    '@/store': path.resolve(__dirname, '..', 'src/weapp/store')
   }
 }
 

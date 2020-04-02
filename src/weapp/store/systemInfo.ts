@@ -3,6 +3,7 @@ import { action, observable } from 'mobx'
 
 class SystemInfo {
   @observable systemInfo = {}
+  @observable networkType = 'wifi'
 
   @action
   getSystemInfo = () => {
@@ -10,6 +11,11 @@ class SystemInfo {
       .then(res => {
         this.systemInfo = res
       })
+  }
+
+  @action
+  saveNetworkType = type => {
+    this.networkType = type
   }
 }
 

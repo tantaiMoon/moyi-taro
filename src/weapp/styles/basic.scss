@@ -2,10 +2,13 @@
 
 
 .wrapper {
-  width: 100vw;
-  //height: 100vh;
+  padding: 30px;
+  //display: flex;
+  flex: 1;
 }
 
 .container {
   width: 100vw;
+  display: flex;
+  //background-color: #f0f0f5;
 }

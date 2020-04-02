@@ -2,8 +2,8 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import {inject, observer} from '@tarojs/mobx'
-import CustomNavigationBar from '@components/custom-navigation-bar'
-import Container from '@components/container'
+import CustomNavigationBar from '@/components/custom-navigation-bar'
+import Container from '@/components/container'
 import './index.scss'
 
 
@@ -55,6 +55,9 @@ class Index extends Component<IProps> {
         />
         <Container>
           <View className='wrapper'>
+            <View className='h2'>
+              <Text>今日天气</Text>
+            </View>
             <Text>Hello world!</Text>
           </View>
         </Container>

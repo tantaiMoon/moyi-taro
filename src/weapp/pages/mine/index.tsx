@@ -1,6 +1,8 @@
 import Taro  from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import CustomNavigationBar from '@components/custom-navigation-bar'
+import CustomNavigationBar from '@/components/custom-navigation-bar'
+import Container from '@/components/container'
+import './index.scss'
 
 class Mine extends Taro.PureComponent {
 
@@ -18,9 +20,11 @@ class Mine extends Taro.PureComponent {
           bgImg=''
           txtColor='#000'
         />
-        <View>
-          wrapper
-        </View>
+        <Container>
+          <View className='wrapper'>
+            wrapper mine
+          </View>
+        </Container>
         mine
       </View>
     )

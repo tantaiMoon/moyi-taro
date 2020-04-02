@@ -22,17 +22,19 @@
     "typeRoots": [
       "node_modules/@types",
       "global.d.ts"
-    ]
+    ],
+    "paths": {
+      "@/api/*": ["src/weapp/api/*"],
+      "@/*": ["src/*"],
+      "@/components/*": ["src/weapp/components/*"],
+      "@/assets/*": ["src/weapp/assets/*"],
+      "@styles/*": ["src/weapp/styles/*"],
+      "@/store/*": ["src/weapp/store/*"]
+    }
   },
   "exclude": [
     "node_modules",
     "dist"
   ],
-  "compileOnSave": false,
-  "paths": {
-    "@/api": ["src/api"],
-    "@/components": ["src/components"],
-    "@/assets": ["src/assets"],
-    "@/store": ["src/store"]
-  }
+  "compileOnSave": false
 }
