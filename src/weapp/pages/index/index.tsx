@@ -8,14 +8,15 @@ import './index.scss'
 
 
 type IProps = {
-  systemInfo?: any
+  systemInfo?: any,
+  dataStore?: any
 }
 
 interface Index {
   props: IProps
 }
 
-@inject('systemInfo')
+@inject('systemInfo', 'dataStore')
 @observer
 class Index extends Component<IProps> {
 
@@ -35,6 +36,7 @@ class Index extends Component<IProps> {
 
   componentDidMount () {
     this.props.systemInfo.getSystemInfo()
+    this.props.dataStore.getNowWeatherData()
   }
 
   componentWillUnmount () { }

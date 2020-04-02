@@ -1,5 +1,7 @@
 import SystemInfo from './systemInfo'
+import DataStore from './data'
 
 export default {
-  systemInfo: new SystemInfo()
+  systemInfo: new SystemInfo(),
+  dataStore: new DataStore()
 }

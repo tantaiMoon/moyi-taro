@@ -12,7 +12,6 @@ import './app.scss'
 // if (process.env.NODE_ENV !== 'production' && process.env.TARO_ENV === 'h5')  {
 //   require('nerv-devtools')
 // }
-console.log('log --------- store: ', store)
 
 class App extends Component {
 
@@ -68,6 +67,7 @@ class App extends Component {
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数
   render () {
+    console.log('log --------- store: ', store)
     return (
       <Provider store={store}>
         <Index />

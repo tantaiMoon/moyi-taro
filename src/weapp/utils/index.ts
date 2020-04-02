@@ -1,3 +1,5 @@
+import Taro from '@tarojs/taro'
+
 export function parseUrl (url) {
   const rule =
     '^(?:([^/?#]+))?//(?:([^:]*)(?::?(.*))@)?(?:([^/?#:]*):?([0-9]+)?)?([^?#]*)(\\?(?:[^#]*))?(#(?:.*))?'
@@ -19,9 +21,14 @@ export const getUuid = () => {
   // eslint-disable-next-line no-undef
   let chars = SECRET_KEY.split('')
   let uuid
+  console.log('log --------- chars: ', chars)
   for (let i = 0; i < 32; i++) {
     uuid[i] = chars[0 | (Math.random() * 16)]
   }
   return uuid.join('')
 }
 
+export const isLogin = () => {
+  console.log('log --------- Taro.getStorageSync(\'USER_INFO\'): ', Taro.getStorageSync('USER_INFO'))
+  return !!Taro.getStorageSync('USER_INFO')
+}

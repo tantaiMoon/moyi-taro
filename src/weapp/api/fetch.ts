@@ -1,8 +1,8 @@
-import CryptoJS from 'crypto-js'
+// import CryptoJS from 'crypto-js'
 import { stringify } from 'qs'
 import { API_LOGIN } from '@/api/index'
-import { Base64 } from 'js-base64'
-import { parseUrl, getUuid } from '@/utils'
+// import { Base64 } from 'js-base64'
+// import { getUuid } from '@/utils/index'
 import Taro from '@tarojs/taro'
 import store from '@/store/index'
 
@@ -99,7 +99,7 @@ function setUpDefaultQuery(params) {
   if (payload && method === 'GET') {
     dataRes = payload
   }
-  dataRes.nonce = getUuid()
+  // dataRes.nonce = getUuid()
   dataRes.timestamp = Math.round(new Date().getTime() / 1000).toString()
   const allKeys = Object.keys(dataRes)
   allKeys.sort()
@@ -112,24 +112,24 @@ function setUpDefaultQuery(params) {
     }
     queryString = queryString + key + '=' + value + (index < allKeys.length - 1 ? '&' : '')
   })
-  const tmpUrl = parseUrl(base)
+  // const tmpUrl = parseUrl(base)
 
-  let sign =
-    method + '\n' + tmpUrl.host + '\n' + tmpUrl.pathname + encodeURI(url) + '\n' + queryString
-  if (contentType) {
-    sign = sign + '\n' + contentType
-  }
-
-  if (method !== 'GET' && Object.keys(payload).length > 0) {
-    sign = sign + '\n' + Base64.encode(JSON.stringify(payload))
-  }
-  sign = encryptHmacSHA256(sign, publicKey)
-  dataRes.sign = sign
+  // let sign =
+  //   method + '\n' + tmpUrl.host + '\n' + tmpUrl.pathname + encodeURI(url) + '\n' + queryString
+  // if (contentType) {
+  //   sign = sign + '\n' + contentType
+  // }
+  //
+  // if (method !== 'GET' && Object.keys(payload).length > 0) {
+  //   sign = sign + '\n' + Base64.encode(JSON.stringify(payload))
+  // }
+  // sign = encryptHmacSHA256(sign, publicKey)
+  // dataRes.sign = sign
   return dataRes
 }
 
-function encryptHmacSHA256(value, publicKey) {
-  const cipherText = CryptoJS.HmacSHA256(value, publicKey || '')
-  const hashInBase64 = CryptoJS.enc.Base64.stringify(cipherText)
-  return hashInBase64
-}
+// function encryptHmacSHA256(value, publicKey) {
+//   const cipherText = CryptoJS.HmacSHA256(value, publicKey || '')
+//   const hashInBase64 = CryptoJS.enc.Base64.stringify(cipherText)
+//   return hashInBase64
+// }

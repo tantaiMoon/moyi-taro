@@ -118,7 +118,8 @@ const config = {
     }
   },
   alias: {
-    '@': path.resolve(__dirname, '..', 'src'),
+    // '@': path.resolve(__dirname, '..', 'src'),
+    '@/utils': path.resolve(__dirname, '..', 'src/weapp/utils'),
     '@/api': path.resolve(__dirname, '..', 'src/weapp/api'),
     '@/components': path.resolve(__dirname, '..', 'src/weapp/components'),
     '@/assets': path.resolve(__dirname, '..', 'src/weapp/assets'),
