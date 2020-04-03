@@ -11,6 +11,8 @@ const CODE_AUTH_EXPIRED = 401
 
 const base = process.env.BASE_URL
 const api = process.env.API_URL
+const map = process.env.MAP_URL
+const mapKey = process.env.MAP_KEY
 const USER_INFO = 'USER_INFO'
 
 export default function fetch(options) {
@@ -42,18 +44,21 @@ export default function fetch(options) {
     Accept: 'application/json',
     Version: '1.0'
   }
-  const { url, payload, method = 'GET', showToast = true } = options
+  const { url, payload, method = 'GET', showToast = true, type = 1 } = options
   let contentType
   if (method !== 'GET') {
     contentType = 'application/json;charset=UTF-8'
     header['Content-Type'] = contentType
+  }
+  if (type === 3) {
+    payload.key = mapKey
   }
   const params = { url, method, contentType, payload, publicKey }
   const resultQuery = setUpDefaultQuery(params)
   const myUrl = url + '?' + stringify(resultQuery)
 
   return Taro.request({
-    url: api + myUrl,
+    url: type === 1 ? base : (type === 2 ? api : map) + myUrl,
     method,
     data: payload,
     header
@@ -61,16 +66,25 @@ export default function fetch(options) {
     .then(res => {
       Taro.hideLoading()
       const response = res.data
-      const { code, data } = response
-
-      if (code !== CODE_SUCCESS) {
-        return Promise.reject(response)
-      } else {
-        if (url === API_LOGIN && data !== null && data !== '') {
-          Taro.setStorageSync(USER_INFO, response)
+      if (type === 1) {
+        const { code, data } = response
+        if (code !== CODE_SUCCESS) {
+          return Promise.reject(response)
+        } else {
+          if (url === API_LOGIN && data !== null && data !== '') {
+            Taro.setStorageSync(USER_INFO, response)
+          }
+          return data
         }
-        return data
+      } else if (type === 3) {
+        const {status, regeocode} = response
+        if (status === '1') {
+          return regeocode
+        } else {
+          return Promise.reject(regeocode)
+        }
       }
+
     })
     .catch(err => {
       Taro.hideLoading()
@@ -100,7 +114,7 @@ function setUpDefaultQuery(params) {
     dataRes = payload
   }
   // dataRes.nonce = getUuid()
-  dataRes.timestamp = Math.round(new Date().getTime() / 1000).toString()
+  // dataRes.timestamp = Math.round(new Date().getTime() / 1000).toString()
   const allKeys = Object.keys(dataRes)
   allKeys.sort()
   let queryString = ''

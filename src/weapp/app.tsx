@@ -23,6 +23,11 @@ class App extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
+    "permission": {
+      "scope.userLocation": {
+        "desc": "你的位置信息将用于小程序位置接口的效果展示" // 高速公路行驶持续后台定位
+      }
+    },
     pages: [
       'pages/index/index',
       'pages/mine/index'

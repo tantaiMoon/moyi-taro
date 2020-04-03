@@ -1,9 +1,11 @@
 import Taro from '@tarojs/taro'
 import { action, observable } from 'mobx'
+import fetch from '@/api/fetch'
 import { isLogin } from '@/utils/index'
 
 class SystemInfo {
   @observable systemInfo = {}
+  @observable locationInfo = {}
   @observable networkType: string = 'wifi'
   @observable isLogin: boolean = isLogin()
 
@@ -16,13 +18,42 @@ class SystemInfo {
   }
 
   @action
+  getLocation = () => {
+    Taro.getLocation({
+      isHighAccuracy: true,
+      altitude: 'true'
+    })
+      .then(res => {
+        console.log('log --------- loc: ', res)
+        this.locationInfo = res
+        // location=116.481488,39.990464&poitype=商务写字楼&radius=1000&extensions=all&batch=false&roadlevel=0
+        return fetch({
+          url: `v3/geocode/regeo`,
+          payload: {
+            location: `"${res.latitude},${res.longitude}"`,
+            output: 'json',
+            extensions: 'all',
+            poitype: '商务写字楼',
+            radius: 2000,
+            roadlevel: 0,
+            batch: false
+          },
+          type: 3
+        })
+
+      })
+      .then(maps => {
+        console.log('log --------- maps: ', maps)
+      })
+  }
+
+  @action
   saveNetworkType = type => {
     this.networkType = type
   }
 
   @action
   setLoginStatus = status => {
-    console.log('log --------- this.state : ', status)
     this.isLogin = status
   }
 }

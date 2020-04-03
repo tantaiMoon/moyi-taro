@@ -36,6 +36,7 @@ class Index extends Component<IProps> {
 
   componentDidMount () {
     this.props.systemInfo.getSystemInfo()
+    this.props.systemInfo.getLocation()
     this.props.dataStore.getNowWeatherData()
   }
 
@@ -57,6 +58,7 @@ class Index extends Component<IProps> {
         />
         <Container>
           <View className='wrapper'>
+
             <View className='h2'>
               <Text>今日天气</Text>
             </View>

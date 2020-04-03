@@ -13,13 +13,16 @@ class DataStore {
       payload: {
         location: 'beijing',
         key: '7e27e89bf8bf4023b0e50401646fd1fb'
-      }
+      },
+      type: 2
     }
 
     fetch(params)
       .then(res => {
         console.log('log --------- res: ', res)
-      })
+      }).catch(err => {
+        console.log('log --------- : ', err)
+    })
   }
 }
 
