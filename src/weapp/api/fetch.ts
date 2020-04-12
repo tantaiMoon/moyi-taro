@@ -14,6 +14,7 @@ const api = process.env.API_URL
 const map = process.env.MAP_URL
 const mapKey = process.env.MAP_KEY
 const USER_INFO = 'USER_INFO'
+const OK = 'ok'
 
 export default function fetch(options) {
   const { systemInfo } = store
@@ -67,14 +68,21 @@ export default function fetch(options) {
       Taro.hideLoading()
       const response = res.data
       if (type === 1) {
-        const { code, data } = response
-        if (code !== CODE_SUCCESS) {
+        const {code, data, status} = response
+        if (code !== CODE_SUCCESS || status === OK) {
           return Promise.reject(response)
         } else {
           if (url === API_LOGIN && data !== null && data !== '') {
             Taro.setStorageSync(USER_INFO, response)
           }
           return data
+        }
+      } else if (type === 2) {
+        const {HeWeather6} = response
+        if (HeWeather6) {
+          return HeWeather6
+        } else {
+          return Promise.reject(HeWeather6)
         }
       } else if (type === 3) {
         const {status, regeocode} = response
@@ -108,7 +116,8 @@ export default function fetch(options) {
 }
 
 function setUpDefaultQuery(params) {
-  const { url, method, contentType, payload, publicKey } = params
+  const {method, payload} = params
+  // const { url, method, contentType, payload, publicKey } = params
   let dataRes
   if (payload && method === 'GET') {
     dataRes = payload
