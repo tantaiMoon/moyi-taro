@@ -37,7 +37,14 @@ class Index extends Component<IProps> {
   componentDidMount () {
     this.props.systemInfo.getSystemInfo()
     this.props.systemInfo.getLocation()
-    this.props.dataStore.getNowWeatherData()
+      .then(res => {
+        console.log('log --------- l: ', res)
+        const params = {
+          location: res.addressComponent.province,
+          type: 'now'
+        }
+        this.props.dataStore.getNowWeatherData(params)
+      })
   }
 
   componentWillUnmount () { }
