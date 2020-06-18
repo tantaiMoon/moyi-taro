@@ -16,9 +16,17 @@ interface Index {
   props: IProps
 }
 
+type IState = {
+  district: string,
+  province
+  country: string
+  adcode: string
+  township: string
+}
+
 @inject('systemInfo', 'dataStore')
 @observer
-class Index extends Component<IProps> {
+class Index extends Component<IProps, IState> {
 
   /**
    * 指定config的类型声明为: Taro.Config
@@ -31,6 +39,16 @@ class Index extends Component<IProps> {
     navigationBarTitleText: '首页',
     navigationStyle: 'custom'
   }
+  constructor(props) {
+    super(props);
+    this.state = {
+      district: '',
+      province: '',
+      country: '',
+      adcode: '',
+      township: ''
+    }
+  }
 
   componentWillMount () { }
 
@@ -39,6 +57,13 @@ class Index extends Component<IProps> {
     this.props.systemInfo.getLocation()
       .then(res => {
         console.log('log --------- l: ', res)
+        this.setState({
+          district: res.addressComponent.district,
+          province: res.addressComponent.province,
+          country: res.addressComponent.country,
+          adcode: res.addressComponent.adcode,
+          township: res.addressComponent.township
+        });
         const params = {
           location: res.addressComponent.province,
           type: 'now'
@@ -54,6 +79,7 @@ class Index extends Component<IProps> {
   componentDidHide () { }
 
   render () {
+    const {district, province, country} = this.state;
     return (
       <View className='index'>
         <CustomNavigationBar
@@ -69,7 +95,7 @@ class Index extends Component<IProps> {
             <View className='h2'>
               <Text>今日天气</Text>
             </View>
-            <Text>Hello world!</Text>
+            <Text>{country} {province} {district}!</Text>
           </View>
         </Container>
 

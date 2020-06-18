@@ -19,7 +19,7 @@ class SystemInfo {
 
   @action
   getLocation = () => {
-    Taro.getLocation({
+    return Taro.getLocation({
       isHighAccuracy: true,
       altitude: 'true'
     })
@@ -30,7 +30,7 @@ class SystemInfo {
         return fetch({
           url: `v3/geocode/regeo`,
           payload: {
-            location: `"${res.latitude},${res.longitude}"`,
+            location: `${res.longitude},${res.latitude}`,
             output: 'json',
             extensions: 'all',
             poitype: '商务写字楼',
@@ -41,9 +41,6 @@ class SystemInfo {
           type: 3
         })
 
-      })
-      .then(maps => {
-        console.log('log --------- maps: ', maps)
       })
   }
 
