@@ -47,6 +47,7 @@ class Index extends Component<IProps, IState> {
       country: '',
       // eslint-disable-next-line react/no-unused-state
       adcode: '',
+      // eslint-disable-next-line react/no-unused-state
       township: ''
     }
   }
