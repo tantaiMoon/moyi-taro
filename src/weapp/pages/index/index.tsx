@@ -18,7 +18,7 @@ interface Index {
 
 type IState = {
   district: string,
-  province
+  province: string
   country: string
   adcode: string
   township: string
@@ -45,6 +45,7 @@ class Index extends Component<IProps, IState> {
       district: '',
       province: '',
       country: '',
+      // eslint-disable-next-line react/no-unused-state
       adcode: '',
       township: ''
     }
@@ -61,7 +62,9 @@ class Index extends Component<IProps, IState> {
           district: res.addressComponent.district,
           province: res.addressComponent.province,
           country: res.addressComponent.country,
+          // eslint-disable-next-line react/no-unused-state
           adcode: res.addressComponent.adcode,
+          // eslint-disable-next-line react/no-unused-state
           township: res.addressComponent.township
         });
         const params = {
