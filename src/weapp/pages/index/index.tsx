@@ -27,7 +27,7 @@ type IState = {
 @inject('systemInfo', 'dataStore')
 @observer
 class Index extends Component<IProps, IState> {
-
+  // 不在同一个文件中
   /**
    * 指定config的类型声明为: Taro.Config
    *
