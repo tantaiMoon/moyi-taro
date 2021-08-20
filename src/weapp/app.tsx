@@ -15,6 +15,7 @@ import './app.scss'
 
 class App extends Component {
   // 这里是checkout dev分支的
+  // 再加一些
   /**
    * 指定config的类型声明为: Taro.Config
    *
